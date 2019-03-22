@@ -3,7 +3,7 @@ import classes from './BurgerIngredients.module.css';
 /*To use PropTypes, we have to install and it import it. Look in notes*/
 import PropTypes from 'prop-types';
 
-/* This will be a functional component, because it is stateless, but we are going to change it to a functional component to use PropTyes. You do not have to, but the instructor likes to, so we will. */
+/* This will be a functional component, because it is stateless, but we are going to change it to a functional component to use PropTyes. You do not have to, but the instructor likes to, so we will. Lecture 151*/
 class BurgerIngredients extends Component {
     render () {
         /*We add some logic in here. We do this because there are differet types of ingredients, and we need to determine which ingredient to render. Lecture 150*/
@@ -37,7 +37,6 @@ class BurgerIngredients extends Component {
             default:
                 ingredient = null;
         }
-
         return ingredient;
     }
 }
