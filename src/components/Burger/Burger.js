@@ -9,8 +9,8 @@ const burger = (props) => {
         /*We make a wrapper, what the div is, to define some width and heigth of the burger*/
         <div className={classes.Burger}>
             <BurgerIngredients type="bread-top" />
-            <BurgerIngredients type="bread-cheese" />
-            <BurgerIngredients type="bread-meat" />
+            <BurgerIngredients type="cheese" />
+            <BurgerIngredients type="meat" />
             <BurgerIngredients type="bread-bottom" />
         </div>  
     );
