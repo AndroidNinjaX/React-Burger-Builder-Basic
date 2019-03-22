@@ -1,5 +1,6 @@
 import React from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
+import classes from './Layout.module.css';
 
 const layout = (props) => (
     /* We use Aux HOC (Higher Order Component), so that we can return adjacent elements. */
@@ -9,7 +10,7 @@ const layout = (props) => (
             Toolbar, Sidebar, Backdrop
         </div>
         {/* In the "main" element, we want to output the componet that we will wrap with this layout. */}
-        <main>
+        <main className={classes.Content}>
             {props.children}
         </main>
     </Auxiliary>
