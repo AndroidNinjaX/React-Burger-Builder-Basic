@@ -6,7 +6,7 @@ import BurgerIngredients from './BurgerIngredients/BurgerIngredients';
 /* The Burger component will use the BurgerIngredients component that we created */
 const burger = (props) => {
     /*See Notes on how this works*/
-    const transformedIngredients = Object.keys(props.ingredients)
+    let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             console.log("This is my igKey '" + igKey + "'");
             return [...Array(props.ingredients[igKey])].map((_, i) => {
@@ -19,7 +19,11 @@ const burger = (props) => {
         }, []);
         console.log("This is my transformedIngredients variable: ");
         console.log(transformedIngredients);
-        
+
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients!</p>
+    }
+    
     return (
         /*We make a wrapper, what the div is, to define some width and heigth of the burger*/
         <div className={classes.Burger}>
