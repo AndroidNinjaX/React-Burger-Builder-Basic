@@ -19,11 +19,12 @@ const burger = (props) => {
         }, []);
         console.log("This is my transformedIngredients variable: ");
         console.log(transformedIngredients);
-
+        
+    /*Add out "if" statement to check if there is anything in "transformedIngredients"*/
     if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Please start adding ingredients!</p>
     }
-    
+
     return (
         /*We make a wrapper, what the div is, to define some width and heigth of the burger*/
         <div className={classes.Burger}>
