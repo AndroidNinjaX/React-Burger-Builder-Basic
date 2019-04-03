@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger/Burger';
+import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 
 class BurgerBuider extends Component {
     /* We make out "state" that contain our ingredients */
@@ -20,7 +21,7 @@ class BurgerBuider extends Component {
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
                 {/*We pass along our ingredents from our state, into the Burger component */}
                 <Burger ingredients={this.state.ingredients}/>
-                <div>Build Controls</div>
+                <BuildControls />
             </Auxiliary>
         );
     }

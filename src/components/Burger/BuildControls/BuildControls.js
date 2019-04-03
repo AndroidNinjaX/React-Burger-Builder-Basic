@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from "../BuildControls/buildControls";
+import classes from "./BuildControls.module.css";
+import BuildControl from "./BuildControl/BuildControl";
 
 /*We make an array of controls, this is added for convience. So we have an array we can loop, to conviently build all the "buildControls" and render them*/
 const controls = [
@@ -10,8 +11,10 @@ const controls = [
 ];
 
 const buildControls = (props) => (
-    <div>
-
+    <div className={classes.BuildControls}>
+        {controls.map(ctrl => (
+            <BuildControl key={ctrl.label} label={ctrl.label} />
+        ))}
     </div>
 );
 
