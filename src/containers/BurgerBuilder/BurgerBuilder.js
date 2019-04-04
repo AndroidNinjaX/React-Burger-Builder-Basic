@@ -24,7 +24,7 @@ class BurgerBuider extends Component {
         totalPrice: 4
     }
 
-    /*Add the functionality to be able to add and remove ingredients from the burger*/
+    /*Add the functionality to be able to add ingredients from the burger*/
     addIngredientHandler = (type) => {
         /*Get the old count*/
         const oldCount = this.state.ingredients[type];
@@ -46,8 +46,26 @@ class BurgerBuider extends Component {
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
     }
 
+    /*Add the funtionality to be able to "remove" ingredients from the burger*/
     removeIngredientHandler = (type) => {
-
+        /*Get the old count*/
+        const oldCount = this.state.ingredients[type];
+        /*Update that count*/
+        const updatedCounted = oldCount - 1;
+        /*Create a new object with the spread operator. This will be the updated ingredients.*/
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+        /*Update the count of the new ingredients object*/
+        updatedIngredients[type] = updatedCounted;
+        /*Get how much the ingredient will be*/
+        const priceDeduction = INGREDIENT_PRICES[type];
+        /*Get the current total price*/
+        const oldPrice = this.state.totalPrice;
+        /*Subtract the new price to the old price*/
+        const newPrice = oldPrice - priceDeduction;
+        /*Now update state*/
+        this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
     }
 
     render() {
