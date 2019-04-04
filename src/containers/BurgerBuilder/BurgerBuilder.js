@@ -26,10 +26,7 @@ class BurgerBuider extends Component {
     }
 
     /*Handler to determine weather "purchasable" is true ore not.*/
-    updatePurchaseState () {
-        const ingredents = {
-            ...this.state.ingredients
-        };
+    updatePurchaseState (ingredents) {
         const sum = Object.keys(ingredents)
             .map(igkey => {
                 return ingredents[igkey];
@@ -60,6 +57,7 @@ class BurgerBuider extends Component {
         const newPrice = oldPrice + priceAddition;
         /*Now update state*/
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+        this.updatePurchaseState(updatedIngredients);
     }
 
     /*Add the funtionality to be able to "remove" ingredients from the burger*/
@@ -86,6 +84,7 @@ class BurgerBuider extends Component {
         const newPrice = oldPrice - priceDeduction;
         /*Now update state*/
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+        this.updatePurchaseState(updatedIngredients);
     }
 
     render() {
