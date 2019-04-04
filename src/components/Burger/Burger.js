@@ -5,7 +5,7 @@ import BurgerIngredients from './BurgerIngredients/BurgerIngredients';
 
 /* The Burger component will use the BurgerIngredients component that we created */
 const burger = (props) => {
-    /*See Notes on how this works*/
+    /*See Notes on how this works. Pg 76-79*/
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             console.log("This is my igKey '" + igKey + "'");
