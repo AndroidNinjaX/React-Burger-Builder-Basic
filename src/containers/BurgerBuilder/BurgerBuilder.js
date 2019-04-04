@@ -73,6 +73,15 @@ class BurgerBuider extends Component {
     }
 
     render() {
+
+        /*We add this logic to disable the button, if we do not have any of that ingredient.*/
+        const disabledInfo ={
+            ...this.state.ingredients
+        };
+        for (let key in disabledInfo) {
+            disabledInfo[key] = disabledInfo[key] <= 0;
+        }
+
         return(
             /*Use the Auxiliary componet because we can return adjacent elements*/
             <Auxiliary>
@@ -82,7 +91,8 @@ class BurgerBuider extends Component {
                 {/*This is the "build controls" component. Bassicall stuff to build our burger with.*/}
                 <BuildControls 
                     ingredientAdded={this.addIngredientHandler}
-                    ingredientRemove={this.removeIngredientHandler} />
+                    ingredientRemove={this.removeIngredientHandler}
+                    disabled={disabledInfo} />
             </Auxiliary>
         );
     }
