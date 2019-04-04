@@ -50,6 +50,10 @@ class BurgerBuider extends Component {
     removeIngredientHandler = (type) => {
         /*Get the old count*/
         const oldCount = this.state.ingredients[type];
+        /*Add this logic in, so that nothing happens if my ingredient goes less then 0.*/
+        if (oldCount <= 0) {
+            return;
+        }
         /*Update that count*/
         const updatedCounted = oldCount - 1;
         /*Create a new object with the spread operator. This will be the updated ingredients.*/
