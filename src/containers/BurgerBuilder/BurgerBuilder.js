@@ -77,7 +77,8 @@ class BurgerBuider extends Component {
                 <Burger ingredients={this.state.ingredients}/>
                 {/*This is the "build controls" component. Bassicall stuff to build our burger with.*/}
                 <BuildControls 
-                    ingredientAdded={this.addIngredientHandler} />
+                    ingredientAdded={this.addIngredientHandler}
+                    ingredientRemove={this.removeIngredientHandler} />
             </Auxiliary>
         );
     }
