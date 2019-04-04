@@ -21,7 +21,23 @@ class BurgerBuider extends Component {
             cheese: 0,
             meat: 0
         },
-        totalPrice: 4
+        totalPrice: 4,
+        purchasable: false
+    }
+
+    /*Handler to determine weather "purchasable" is true ore not.*/
+    updatePurchaseState () {
+        const ingredents = {
+            ...this.state.ingredients
+        };
+        const sum = Object.keys(ingredents)
+            .map(igkey => {
+                return ingredents[igkey];
+            })
+            .reduce((sum, el) => {
+                return sum + el;
+            }, 0);
+        this.setState({purchasable: sum > 0});
     }
 
     /*Add the functionality to be able to add ingredients from the burger*/
@@ -93,7 +109,8 @@ class BurgerBuider extends Component {
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemove={this.removeIngredientHandler}
                     disabled={disabledInfo} 
-                    price={this.state.totalPrice}/>
+                    price={this.state.totalPrice}
+                    purchasable={this.state.purchasable}/>
             </Auxiliary>
         );
     }
