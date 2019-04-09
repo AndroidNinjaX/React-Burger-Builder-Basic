@@ -94,6 +94,10 @@ class BurgerBuider extends Component {
         this.setState({purchasing: true});
     }
 
+    purchaseCancelHandler = () => {
+        this.setState({purchasing: false});
+    }
+
     render() {
 
         /*We add this logic to disable the button, if we do not have any of that ingredient.*/
@@ -108,7 +112,7 @@ class BurgerBuider extends Component {
             /*Use the Auxiliary componet because we can return adjacent elements*/
             <Auxiliary>
                 {/*We add the Modal component here, but will be adjusted to not show all the time*/}
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary ingredients={this.state.ingredients} />    
                 </Modal>
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
