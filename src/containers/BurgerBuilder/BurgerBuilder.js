@@ -24,7 +24,8 @@ class BurgerBuider extends Component {
             meat: 0
         },
         totalPrice: 4,
-        purchasable: false
+        purchasable: false,
+        purchasing: false
     }
 
     /*Handler to determine weather "purchasable" is true ore not.*/
@@ -89,6 +90,10 @@ class BurgerBuider extends Component {
         this.updatePurchaseState(updatedIngredients);
     }
 
+    purchaseHandler = () => {
+        this.setState({purchasing: true});
+    }
+
     render() {
 
         /*We add this logic to disable the button, if we do not have any of that ingredient.*/
@@ -103,7 +108,7 @@ class BurgerBuider extends Component {
             /*Use the Auxiliary componet because we can return adjacent elements*/
             <Auxiliary>
                 {/*We add the Modal component here, but will be adjusted to not show all the time*/}
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     <OrderSummary ingredients={this.state.ingredients} />    
                 </Modal>
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
@@ -115,7 +120,8 @@ class BurgerBuider extends Component {
                     ingredientRemove={this.removeIngredientHandler}
                     disabled={disabledInfo} 
                     price={this.state.totalPrice}
-                    purchasable={this.state.purchasable}/>
+                    purchasable={this.state.purchasable}
+                    ordered={this.purchaseHandler}/>
             </Auxiliary>
         );
     }
