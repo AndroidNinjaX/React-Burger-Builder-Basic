@@ -98,6 +98,10 @@ class BurgerBuider extends Component {
         this.setState({purchasing: false});
     }
 
+    purchaseContinueHandler = () => {
+        alert("You Continue!");
+    }
+
     render() {
 
         /*We add this logic to disable the button, if we do not have any of that ingredient.*/
@@ -113,7 +117,10 @@ class BurgerBuider extends Component {
             <Auxiliary>
                 {/*We add the Modal component here, but will be adjusted to not show all the time*/}
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                    <OrderSummary ingredients={this.state.ingredients} />    
+                    <OrderSummary 
+                        ingredients={this.state.ingredients}
+                        purchaseCancelled={this.purchaseCancelHandler}
+                        purchaseContinued={this.purchaseContinueHandler} />    
                 </Modal>
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
                 {/*We pass along our ingredents from our state, into the Burger component */}
