@@ -3,6 +3,7 @@ import Auxiliary from '../../hoc/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 /*Now we make a variable to have a mapping of which ingredient cost what. Make it outside of the class but in the same file. Typically coinstants you want to use as global constants will have all caps.*/
 const INGREDIENT_PRICES = {
@@ -102,7 +103,9 @@ class BurgerBuider extends Component {
             /*Use the Auxiliary componet because we can return adjacent elements*/
             <Auxiliary>
                 {/*We add the Modal component here, but will be adjusted to not show all the time*/}
-                <Modal />
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients} />    
+                </Modal>
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
                 {/*We pass along our ingredents from our state, into the Burger component */}
                 <Burger ingredients={this.state.ingredients}/>
