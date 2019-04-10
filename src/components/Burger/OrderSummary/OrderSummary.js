@@ -22,6 +22,8 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientsSummary}
             </ul>
+            {/*Adding the price is pretty simple. Just pass the price in from "BurgerBuilder" and put it where we need to. Also use the "toFixed" to adjust the decimal places.*/}
+            <p><strong>Total Price: ${props.price.toFixed(2)}</strong></p>
             <p>Continue to Checkout?</p>
             <Button btnType="Danger" clicked={props.purchaseCancelled}>CANCEL</Button>
             <Button btnType="Success" clicked={props.purchaseContinued}>CONTINUE</Button>

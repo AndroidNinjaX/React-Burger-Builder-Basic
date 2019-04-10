@@ -12,7 +12,7 @@ const controls = [
 
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
-        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
+        <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
         {/*We set up the "added" property, to send to the individual "BuildControl".*/}
         {controls.map(ctrl => (
             <BuildControl 
