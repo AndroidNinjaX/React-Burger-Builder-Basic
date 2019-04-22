@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Auxiliary from '../../../hoc/Auxiliary';
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
+    //This could be a functional component, but not changing it back.
     componentDidUpdate() {
         console.log('[OrderSummary] did update');
     }
@@ -16,7 +17,7 @@ class OrderSummary extends Component {
             return (
                 <li key={igKey}>
                     <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {this.props.ingredients[igKey]}
-                </li>   );
+                </li>  );
         }   );
 
         return (
