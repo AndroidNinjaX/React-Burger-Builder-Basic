@@ -20,3 +20,10 @@
 .Logo {
     height: 80%;
 }
+
+/* This is for desktop. This will make the nav items disappear, if on a small device. */
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
+}
