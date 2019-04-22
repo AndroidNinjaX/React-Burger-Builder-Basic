@@ -20,7 +20,9 @@ class Layout extends Component {
             <Auxiliary>
                 {/* In this main div, we will want to have a toolbar, sidebar, and backdrop. */}
                 <Toolbar />
-                <SideDrawer closed={this.sideDrawerClosedHandler}/>
+                <SideDrawer 
+                    open={this.state.showSideDrawer} 
+                    closed={this.sideDrawerClosedHandler}/>
                 {/* In the "main" element, we want to output the componet that we will wrap with this layout. */}
                 <main className={classes.Content}>
                     {this.props.children}
