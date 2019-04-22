@@ -3,6 +3,10 @@ import Auxiliary from '../../../hoc/Auxiliary';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
+    componentDidUpdate() {
+        console.log('[OrderSummary] did update');
+    }
+
     render () {
 
         /*This will be the variable to get all of our ingredients. This will be in a "object" format*/

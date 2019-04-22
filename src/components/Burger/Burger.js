@@ -8,17 +8,13 @@ const burger = (props) => {
     /*See Notes on how this works. Pg 76-79*/
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
-            console.log("This is my igKey '" + igKey + "'");
             return [...Array(props.ingredients[igKey])].map((_, i) => {
-                console.log("This is how many of that ingredient. props.ingredients[igKey] '" + props.ingredients[igKey] + "'");
                 return <BurgerIngredients key={igKey + i} type={igKey} />
             });
         })
         .reduce((arr, el) => {
             return arr.concat(el)
         }, []);
-        console.log("This is my transformedIngredients variable: ");
-        console.log(transformedIngredients);
         
     /*Add out "if" statement to check if there is anything in "transformedIngredients"*/
     if (transformedIngredients.length === 0) {
