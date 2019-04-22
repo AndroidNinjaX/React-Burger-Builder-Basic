@@ -11,7 +11,13 @@ class Layout extends Component {
     }
     
     sideDrawerClosedHandler = () => {
-        this.setState({showSideDrawer: true});
+        this.setState({showSideDrawer: false});
+    }
+
+    sideDrawerToggleHandler = () => {
+        this.setState( (prevState) => {
+            return {showSideDrawer: !prevState.showSideDrawer};
+        } );
     }
     
     render() {
@@ -19,7 +25,7 @@ class Layout extends Component {
             /* We use Aux HOC (Higher Order Component), so that we can return adjacent elements. */
             <Auxiliary>
                 {/* In this main div, we will want to have a toolbar, sidebar, and backdrop. */}
-                <Toolbar />
+                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
                 <SideDrawer 
                     open={this.state.showSideDrawer} 
                     closed={this.sideDrawerClosedHandler}/>
