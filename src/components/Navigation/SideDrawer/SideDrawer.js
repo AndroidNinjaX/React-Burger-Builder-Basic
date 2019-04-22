@@ -2,19 +2,24 @@ import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import classes from './SideDrawer.module.css';
+import Backdrop from '../../UI/Backdrop/Backdrop';
+import Auxiliary from '../../../hoc/Auxiliary';
 
 const sideDrawer = (props) => {
     //... add some conditional CSS classes
     
     return (
-        <div className={classes.SideDrawer}>
-            <div className={classes.Logo}>
-                <Logo />
+        <Auxiliary>
+            <Backdrop show/>
+            <div className={classes.SideDrawer}>
+                <div className={classes.Logo}>
+                    <Logo />
+                </div>
+                <nav>
+                    <NavigationItems />
+                </nav>
             </div>
-            <nav>
-                <NavigationItems />
-            </nav>
-        </div>
+        </Auxiliary>
     );
 }
 
