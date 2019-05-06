@@ -1,7 +1,5 @@
 # Burger Builder made with **React**
 
-### This is from the Udemy Course [React - The Complete Guide](https://www.udemy.com/react-the-complete-guide-incl-redux/)
-
 ### What does this app do?
 
 * Allows the user to priview their burger while creating the burger.
@@ -22,3 +20,7 @@
 * After downloading the application do the following in the Node.js terminal:
   * "npm install"
   * "npm start"
+
+### Notes
+* This was created with [Create-React-App](https://github.com/facebook/create-react-app)
+* This is from the Udemy Course [React - The Complete Guide](https://www.udemy.com/react-the-complete-guide-incl-redux/)
