@@ -101,6 +101,20 @@ class BurgerBuider extends Component {
 
     purchaseContinueHandler = () => {
         //alert("You Continue!");
+        const order = {
+            ingredents: this.state.ingredients,
+            price: this.state.totalPrice,
+            customer: {
+                name: 'TJ Hardin',
+                address: {
+                    street: 'Test Street',
+                    zipCode: '12345',
+                    country: 'USA'
+                },
+                email: 'test@test.com'
+            },
+            dileveryMethod: 'fastest'
+        };
         axios.post('/orders.json');
     }
 
