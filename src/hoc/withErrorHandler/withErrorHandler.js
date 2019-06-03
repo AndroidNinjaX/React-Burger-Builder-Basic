@@ -31,7 +31,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
                 <Auxiliary>
                     <Modal 
                         show={this.state.error}
-                        {/*Use modalClosed, 'clicked' is for the backdrop*/}
+                        /*Use modalClosed, 'clicked' is for the backdrop*/
                         modalClosed={this.errorConfirmedHandler}>
                         {this.state.error ? this.state.error.message : null}
                     </Modal>
