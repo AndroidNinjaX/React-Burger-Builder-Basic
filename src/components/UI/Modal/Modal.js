@@ -5,8 +5,11 @@ import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
 
+    /*------------------
+    We have to update this logic, because we now pass in "children" from the BurgerBuilder, because we did it as a variable. Due to this, "nextProps.show" does not work, and we need to check "nextProps.children". This will make sure that it does update if it gets new children.
+    ------------------*/
     shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.show !== this.props.show;
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
     componentDidUpdate() {
