@@ -171,4 +171,4 @@ class BurgerBuider extends Component {
     }
 }
 
-export default withErrorHandler(BurgerBuider);
+export default withErrorHandler(BurgerBuider, axios);
