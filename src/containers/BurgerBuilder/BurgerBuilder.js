@@ -5,6 +5,7 @@ import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 /*Now we make a variable to have a mapping of which ingredient cost what. Make it outside of the class but in the same file. Typically coinstants you want to use as global constants will have all caps.*/
 const INGREDIENT_PRICES = {
@@ -26,7 +27,8 @@ class BurgerBuider extends Component {
         },
         totalPrice: 4,
         purchasable: false,
-        purchasing: false
+        purchasing: false,
+        loading: false
     }
 
     /*Handler to determine weather "purchasable" is true ore not.*/
@@ -129,17 +131,22 @@ class BurgerBuider extends Component {
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
+        let orderSummary = <OrderSummary 
+            ingredients={this.state.ingredients}
+            price={this.state.totalPrice}
+            purchaseCancelled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler} />; 
+
+        if(this.state.loading) {
+            orderSummary = <Spinner />
+        }
 
         return(
             /*Use the Auxiliary componet because we can return adjacent elements*/
             <Auxiliary>
                 {/*We add the Modal component here, but will be adjusted to not show all the time*/}
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                    <OrderSummary 
-                        ingredients={this.state.ingredients}
-                        price={this.state.totalPrice}
-                        purchaseCancelled={this.purchaseCancelHandler}
-                        purchaseContinued={this.purchaseContinueHandler} />    
+                    {orderSummary}  
                 </Modal>
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
                 {/*We pass along our ingredents from our state, into the Burger component */}
