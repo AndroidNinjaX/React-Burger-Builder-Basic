@@ -6,6 +6,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 /*Now we make a variable to have a mapping of which ingredient cost what. Make it outside of the class but in the same file. Typically coinstants you want to use as global constants will have all caps.*/
 const INGREDIENT_PRICES = {
@@ -170,4 +171,4 @@ class BurgerBuider extends Component {
     }
 }
 
-export default BurgerBuider;
+export default withErrorHandler(BurgerBuider);
