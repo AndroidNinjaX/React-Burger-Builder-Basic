@@ -8,10 +8,14 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null
         }
 
+        /*In the interceptors we have to return something.
+            -When sending the requenst, we can just return the request.
+            -When recieveing the repsonse for an error, we can just return the response
+        */
         componentDidMount () {
-            axios.interceptors.request.use(req => {
+            axios.interceptors.request.use(request => {
                 this.setState({error: null});
-                return req;
+                return request;
             });
             axios.interceptors.response.use(response => response , error => {
                 this.setState({error: error});
@@ -27,7 +31,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
                 <Auxiliary>
                     <Modal 
                         show={this.state.error}
-                        clicked={this.errorConfirmedHandler}>
+                        {/*Use modalClosed, 'clicked' is for the backdrop*/}
+                        modalClosed={this.errorConfirmedHandler}>
                         {this.state.error ? this.state.error.message : null}
                     </Modal>
                     <WrappedComponent {...this.props} />
