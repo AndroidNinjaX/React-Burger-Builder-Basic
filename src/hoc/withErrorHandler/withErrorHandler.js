@@ -5,7 +5,12 @@ import Auxiliary from '../Auxiliary/Auxiliary';
 const withErrorHandler = (WrappedComponent) => {
     return (props) => {
         return(
-            <WrappedComponent {...props} />
+            <Auxiliary>
+                <Modal>
+                    Something didn't work!
+                </Modal>
+                <WrappedComponent {...props} />
+            </Auxiliary>
         );
     }
 };
