@@ -102,6 +102,8 @@ class BurgerBuider extends Component {
     }
 
     purchaseContinueHandler = () => {
+        //Want to set this to true, when the user clicks on "order".
+        this.setState({loading: true});
         //alert("You Continue!");
         const order = {
             ingredents: this.state.ingredients,
@@ -118,8 +120,12 @@ class BurgerBuider extends Component {
             dileveryMethod: 'fastest'
         };
         axios.post('/orders.json', order)
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
+            .then(response => {
+                this.setState({loading: false});
+            })
+            .catch(error => {
+                this.setState({loading: false});
+            });
     }
 
     render() {
