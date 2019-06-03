@@ -20,16 +20,21 @@ class BurgerBuider extends Component {
     /* We make out "state" that contain our ingredients */
     /*Add a "total price", and base will be $4*/
     state = {
-        ingredients: {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        },
+        ingredients: null,
         totalPrice: 4,
         purchasable: false,
         purchasing: false,
         loading: false
+    }
+
+    //This will handel getting the ingredients from the Firebase backend initially.
+    componentDidMount () {
+        axios.get('https://react-burger-builder-basic.firebaseio.com/ingredients.json')
+            .then(response => {
+                console.log("This is the ingredients stored on Firebase");
+                console.log(response);
+                this.setState({ingredients: response.data});
+            });
     }
 
     /*Handler to determine weather "purchasable" is true ore not.*/
@@ -120,7 +125,7 @@ class BurgerBuider extends Component {
             },
             dileveryMethod: 'fastest'
         };
-        axios.post('/orders', order)
+        axios.post('/orders.json', order)
             .then(response => {
                 this.setState({loading: false, purchasing: false});
             })
@@ -138,12 +143,29 @@ class BurgerBuider extends Component {
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
-        let orderSummary = <OrderSummary 
-            ingredients={this.state.ingredients}
-            price={this.state.totalPrice}
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler} />; 
+        let orderSummary = null;
 
+        let burger = <Spinner />;
+
+        if(this.state.ingredients) {
+            burger = (
+                <Auxiliary>
+                    <Burger ingredients={this.state.ingredients}/>
+                    <BuildControls 
+                        ingredientAdded={this.addIngredientHandler}
+                        ingredientRemove={this.removeIngredientHandler}
+                        disabled={disabledInfo} 
+                        price={this.state.totalPrice}
+                        purchasable={this.state.purchasable}
+                        ordered={this.purchaseHandler}/>
+                </Auxiliary>
+            );
+            orderSummary = <OrderSummary 
+                    ingredients={this.state.ingredients}
+                    price={this.state.totalPrice}
+                    purchaseCancelled={this.purchaseCancelHandler}
+                    purchaseContinued={this.purchaseContinueHandler} />; 
+        }
         if(this.state.loading) {
             orderSummary = <Spinner />
         }
@@ -157,15 +179,7 @@ class BurgerBuider extends Component {
                 </Modal>
                 {/*Base setup is to return 2 things. Our Burger itself, and the build controls*/}
                 {/*We pass along our ingredents from our state, into the Burger component */}
-                <Burger ingredients={this.state.ingredients}/>
-                {/*This is the "build controls" component. Bassicall stuff to build our burger with.*/}
-                <BuildControls 
-                    ingredientAdded={this.addIngredientHandler}
-                    ingredientRemove={this.removeIngredientHandler}
-                    disabled={disabledInfo} 
-                    price={this.state.totalPrice}
-                    purchasable={this.state.purchasable}
-                    ordered={this.purchaseHandler}/>
+                {burger}
             </Auxiliary>
         );
     }

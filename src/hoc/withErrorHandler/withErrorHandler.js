@@ -8,10 +8,11 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null
         }
 
-        /*In the interceptors we have to return something.
+        /*------------------
+        In the interceptors we have to return something.
             -When sending the requenst, we can just return the request.
             -When recieveing the repsonse for an error, we can just return the response
-        */
+        ------------------*/
         componentDidMount () {
             axios.interceptors.request.use(request => {
                 this.setState({error: null});
