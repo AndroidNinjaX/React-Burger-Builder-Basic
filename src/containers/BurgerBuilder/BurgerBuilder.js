@@ -29,7 +29,7 @@ class BurgerBuider extends Component {
 
     //This will handel getting the ingredients from the Firebase backend initially.
     componentDidMount () {
-        axios.get('https://react-burger-builder-basic.firebaseio.com/ingredients.json')
+        axios.get('https://react-burger-builder-basic.firebaseio.com/ingredients')
             .then(response => {
                 console.log("This is the ingredients stored on Firebase");
                 console.log(response);
