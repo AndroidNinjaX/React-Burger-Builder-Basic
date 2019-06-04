@@ -14,11 +14,11 @@ const withErrorHandler = (WrappedComponent, axios) => {
                 -When sending the requenst, we can just return the request.
                 -When recieveing the repsonse for an error, we can just return the response
             ------------------*/
-            axios.interceptors.request.use(request => {
+            this.requestInterceptor = axios.interceptors.request.use(request => {
                 this.setState({error: null});
                 return request;
             });
-            axios.interceptors.response.use(response => response , error => {
+            this.responseInterceptor = axios.interceptors.response.use(response => response , error => {
                 this.setState({error: error});
             });
         }
