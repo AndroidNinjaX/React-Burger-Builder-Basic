@@ -23,6 +23,12 @@ const withErrorHandler = (WrappedComponent, axios) => {
             });
         }
         
+        componentWillUnmount () {
+            console.log("[withErrorHandler] removing interceptors.");
+            axios.interceptors.request.eject(this.requestInterceptor);
+            axios.interceptors.response.eject(this.responseInterceptor);
+        }
+
         errorConfirmedHandler = () => {
             this.setState({error: null});
         }
