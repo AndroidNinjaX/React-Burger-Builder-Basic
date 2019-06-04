@@ -24,16 +24,20 @@ class BurgerBuider extends Component {
         totalPrice: 4,
         purchasable: false,
         purchasing: false,
-        loading: false
+        loading: false,
+        error: false
     }
 
     //This will handel getting the ingredients from the Firebase backend initially.
     componentDidMount () {
-        axios.get('https://react-burger-builder-basic.firebaseio.com/ingredients')
+        axios.get('https://react-burger-builder-basic.firebaseio.com/ingredients.json')
             .then(response => {
                 console.log("This is the ingredients stored on Firebase");
                 console.log(response);
                 this.setState({ingredients: response.data});
+            })
+            .catch(error => {
+                this.setState({error: true})
             });
     }
 
@@ -145,7 +149,7 @@ class BurgerBuider extends Component {
         }
         let orderSummary = null;
 
-        let burger = <Spinner />;
+        let burger = this.state.error ? <p>Ingredents can't be loaded!</p> : <Spinner />;
 
         if(this.state.ingredients) {
             burger = (
