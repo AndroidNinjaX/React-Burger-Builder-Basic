@@ -7,26 +7,33 @@ import Burger from '../../Burger/Burger';
 
 //Import out buttons in for "cancel" and "continue".
 import Button from '../../UI/Button/Button';
+import classes from './CheckoutSummary.module.css';
 
 const checkoutSummary = (props) => {
     return(
-        <div className="CheckoutSummary">
+        <div className={classes.CheckoutSummary}>
             {/*Heading*/}
             <h1>We hope it taste well!</h1>
 
             {/*We are going to display the burger here, from the burger component. We also put it in a 300x300 box.*/}
-            <div style={{width: '300px', height: '300px', margin: 'auto'}}>
+            <div style={{width: '100%', margin: 'auto'}}>
                 {/*We have to make sure to pass ingredents into the burger, which is expects as a "prop".*/}
                 <Burger ingredients={props.ingredients}/>
             </div>
 
             {/*Add out buttons to the Checkout Summary*/}
-            <Button 
-                btnType="Danger"
-                clicked="">CANCEL</Button>
-            <Button 
-                btnType="Success"
-                clicked="">Continue</Button>
+            <div className={classes.Buttons}>
+                <div>
+                    <Button 
+                        btnType="Danger"
+                        clicked="">CANCEL</Button>
+                </div>
+                <div>
+                    <Button 
+                        btnType="Success"
+                        clicked="">Continue</Button>
+                </div>
+            </div>
         </div>
     );
 };

@@ -4,8 +4,15 @@
     margin: auto;
 }
 
+.Buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
 @media (min-width: 600px) {
     .CheckoutSummary {
         width: 500px;
     }
 }
+
