@@ -9,7 +9,7 @@ import Button from '../../UI/Button/Button';
 
 const checkoutSummary = (props) => {
     return(
-        <div>
+        <div className="CheckoutSummary">
             {/*Heading*/}
             <h1>We hope it taste well!</h1>
 
@@ -28,6 +28,5 @@ const checkoutSummary = (props) => {
                 clicked="">Continue</Button>
         </div>
     );
-}
-
+};
 export default checkoutSummary;
