@@ -1,4 +1,5 @@
-/* The goal of this component is to display a preview of out burger and show the "continue" or "cancel" buttons */
+/* The goal of this component is to display a preview of out burger and show the "continue" or "cancel" buttons. */
+/*This component expects to get 'ingredients' as a 'prop'*/
 import React from 'react';
 
 //Import our burger into the component.
