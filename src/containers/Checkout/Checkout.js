@@ -49,7 +49,7 @@ class Checkout extends Component {
                     path={this.props.match.path + '/contact-data'}
                     render={() => (
                         <ContactData 
-                            ingredients={this.props.ingredients} 
+                            ingredients={this.state.ingredients} 
                             price={this.state.totalPrice}/>
                     )} />
             </div>
