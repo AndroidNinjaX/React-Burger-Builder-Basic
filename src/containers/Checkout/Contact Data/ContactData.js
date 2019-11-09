@@ -13,6 +13,11 @@ class ContactData extends Component {
         }
     }
 
+    orderHandler = (event) => {
+        //This is to prevent the default from sending a request to reload the page.
+        event.preventDefault();
+    }
+
     render () {
         return(
             <div className={classes.ContactData}>
@@ -23,7 +28,7 @@ class ContactData extends Component {
                     <input type='text' name='street' placeholder ='Your Street' />
                     <input type='text' name='postalCode' placeholder ='Postal Code' />
                 </form>
-                <Button btnType="Success">Order</Button>
+                <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
             </div>
         );
     }
