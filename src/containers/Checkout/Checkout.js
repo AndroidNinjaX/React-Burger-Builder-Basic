@@ -13,7 +13,6 @@ class Checkout extends Component {
         }
     }
 
-    //This will happen when the component loads itself, and there is no way to route to it without it being mounted.
     componentDidMount() {
         const query = new URLSearchParams(this.props.location.search);
         console.log(this.props.location.search);
