@@ -13,6 +13,20 @@ class Checkout extends Component {
         }
     }
 
+    //This will happen when the component loads itself, and there is no way to route to it without it being mounted.
+    componentDidMount() {
+        const query = new URLSearchParams(this.props.location.search);
+        console.log(this.props.location.search);
+        console.log(query);
+        const ingredients = {};
+        for (let param of query.entries()){
+            //['salad', '1']
+            ingredients[param[0]] = +param[1];
+        }
+
+        this.setState({ingredients: ingredients});
+    }
+
     /*We added the props, so now we set up the handelers*/
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
