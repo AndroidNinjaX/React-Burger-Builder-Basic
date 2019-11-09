@@ -4,6 +4,12 @@
     text-align: center;
 }
 
+.InputFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 @media (min-width: 600px) {
     .ContactData {
         width: 500px;
