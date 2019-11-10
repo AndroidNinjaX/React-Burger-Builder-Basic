@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../axios-orders';
 
 import Order from '../../components/Order/Order';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Orders extends Component {
     state = {
@@ -11,11 +12,17 @@ class Orders extends Component {
 
     componentDidMount() {
         axios.get('/orders.json')
-            .then(res => {
-                console.log(res.date);
-                this.setState({loading: false});
+            .then(result => {
+                const fetchOrders = [];
+                for(let key in result.data){
+                    fetchOrders.push({
+                        ...result.data[key],
+                        id: key
+                    });
+                }
+                this.setState({loading: false, orders: fetchOrders});
             })
-            .catch(err => {
+            .catch(error => {
                 this.setState({loading: false});
             });
     }
@@ -30,4 +37,4 @@ class Orders extends Component {
     }
 }
 
-export default Orders;
+export default withErrorHandler(Orders, axios);
