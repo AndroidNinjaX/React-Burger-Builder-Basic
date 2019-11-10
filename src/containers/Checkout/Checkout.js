@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import ContactData from './Contact Data/ContactData';
+import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
     /*This is just dummy data currently.*/
