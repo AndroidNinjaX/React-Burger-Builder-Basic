@@ -9,12 +9,56 @@ import Input from '../../../components/UI/Input/Input';
 class ContactData extends Component {
     state = {
         orderForm: {
-            name: 'TJ Hardin',
-            street: 'Test Street',
-            zipCode: '12345',
-            country: 'USA',
-            email: 'test@test.com',
-            dileveryMethod: 'fastest'
+            name: {
+                elementType: 'input',
+                elementconfg: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: ''   
+            },
+            street: {
+                elementType: 'input',
+                elementconfg: {
+                    type: 'text',
+                    placeholder: 'Street'
+                },
+                value: ''   
+            },
+            zipCode: {
+                elementType: 'input',
+                elementconfg: {
+                    type: 'text',
+                    placeholder: 'Zip Code'
+                },
+                value: ''   
+            },
+            country: {
+                elementType: 'input',
+                elementconfg: {
+                    type: 'text',
+                    placeholder: 'Country'
+                },
+                value: ''   
+            },
+            email: {
+                elementType: 'input',
+                elementconfg: {
+                    type: 'email',
+                    placeholder: 'Email'
+                },
+                value: ''   
+            },
+            dileveryMethod: {
+                elementType: 'select',
+                elementconfg: {
+                    options: [
+                        {value: 'fastest', displayValue: 'Fastest'},
+                        {value: 'cheapest', displayValue: 'Cheapest'}
+                    ]
+                },
+                value: ''   
+            },
         },
         loading: false
     }
