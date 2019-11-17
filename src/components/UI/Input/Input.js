@@ -7,6 +7,8 @@ const input = (props) => {
     
     switch (props.elementType) {
         case ('input'):
+            //console.log("[Input.js] here! This is the props in 'input'");
+            //console.log(props);
             inputElement = <input 
                 className={classes.InputElement} 
                 {...props.elementConfig} 
@@ -17,6 +19,21 @@ const input = (props) => {
                 className={classes.InputElement}
                 {...props.elementConfig} 
                 value={props.value}/>;
+            break;
+        case ('select'):
+            //console.log("[Input.js] here! This is the props in 'select'");
+            //console.log(props);
+            inputElement = (
+                <select
+                    className={classes.InputElement}
+                    value={props.value}>
+                    {props.elementConfig.options.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.displayValue}
+                        </option>
+                    ))}
+                </select>
+            );
             break;
         default:
             inputElement = <input 

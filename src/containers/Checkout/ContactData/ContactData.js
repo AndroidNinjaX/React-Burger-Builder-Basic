@@ -11,7 +11,7 @@ class ContactData extends Component {
         orderForm: {
             name: {
                 elementType: 'input',
-                elementconfig: {
+                elementConfig: {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
@@ -19,7 +19,7 @@ class ContactData extends Component {
             },
             street: {
                 elementType: 'input',
-                elementconfig: {
+                elementConfig: {
                     type: 'text',
                     placeholder: 'Street'
                 },
@@ -27,7 +27,7 @@ class ContactData extends Component {
             },
             zipCode: {
                 elementType: 'input',
-                elementconfig: {
+                elementConfig: {
                     type: 'text',
                     placeholder: 'Zip Code'
                 },
@@ -35,7 +35,7 @@ class ContactData extends Component {
             },
             country: {
                 elementType: 'input',
-                elementconfig: {
+                elementConfig: {
                     type: 'text',
                     placeholder: 'Country'
                 },
@@ -43,7 +43,7 @@ class ContactData extends Component {
             },
             email: {
                 elementType: 'input',
-                elementconfig: {
+                elementConfig: {
                     type: 'email',
                     placeholder: 'Email'
                 },
@@ -51,7 +51,7 @@ class ContactData extends Component {
             },
             dileveryMethod: {
                 elementType: 'select',
-                elementconfig: {
+                elementConfig: {
                     options: [
                         {value: 'fastest', displayValue: 'Fastest'},
                         {value: 'cheapest', displayValue: 'Cheapest'}
@@ -103,7 +103,7 @@ class ContactData extends Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
-                        vaule={formElement.config.value} />
+                        value={formElement.config.elementConfig.placeholder} />
                 ))}
             </form>
         );
