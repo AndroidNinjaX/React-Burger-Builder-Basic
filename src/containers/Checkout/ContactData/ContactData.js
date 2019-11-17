@@ -11,7 +11,7 @@ class ContactData extends Component {
         orderForm: {
             name: {
                 elementType: 'input',
-                elementconfg: {
+                elementconfig: {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
@@ -19,7 +19,7 @@ class ContactData extends Component {
             },
             street: {
                 elementType: 'input',
-                elementconfg: {
+                elementconfig: {
                     type: 'text',
                     placeholder: 'Street'
                 },
@@ -27,7 +27,7 @@ class ContactData extends Component {
             },
             zipCode: {
                 elementType: 'input',
-                elementconfg: {
+                elementconfig: {
                     type: 'text',
                     placeholder: 'Zip Code'
                 },
@@ -35,7 +35,7 @@ class ContactData extends Component {
             },
             country: {
                 elementType: 'input',
-                elementconfg: {
+                elementconfig: {
                     type: 'text',
                     placeholder: 'Country'
                 },
@@ -43,7 +43,7 @@ class ContactData extends Component {
             },
             email: {
                 elementType: 'input',
-                elementconfg: {
+                elementconfig: {
                     type: 'email',
                     placeholder: 'Email'
                 },
@@ -51,7 +51,7 @@ class ContactData extends Component {
             },
             dileveryMethod: {
                 elementType: 'select',
-                elementconfg: {
+                elementconfig: {
                     options: [
                         {value: 'fastest', displayValue: 'Fastest'},
                         {value: 'cheapest', displayValue: 'Cheapest'}
@@ -84,13 +84,27 @@ class ContactData extends Component {
     }
 
     render () {
+        const formElementsArray = [];
+        for (let key in this.state.orderForm) {
+            formElementsArray.push({
+                id: key,
+                config: this.state.orderForm[key]
+            });
+        }
+
+        console.log("[ContactData.js] here! This is the formElementsArray");
+        console.log(formElementsArray);
+
         //Show a spinner if we are still loading.
         let form = (
             <form>
-                <Input elementType="..." elementConfig="..." value="" />
-                <Input inputtype="input" type='email' name='email' placeholder ='Your Email' />
-                <Input inputtype="input" type='text' name='street' placeholder ='Your Street' />
-                <Input inputtype="input" type='text' name='postalCode' placeholder ='Postal Code' />
+                {formElementsArray.map(formElement => (
+                    <Input 
+                        key={formElement.id}
+                        elementType={formElement.config.elementType}
+                        elementConfig={formElement.config.elementConfig}
+                        vaule={formElement.config.value} />
+                ))}
             </form>
         );
         if (this.state.loading) {
