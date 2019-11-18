@@ -9,7 +9,7 @@ const input = (props) => {
     //console.log("[Input.js] here! This is the 'inputClasses' array");
     //console.log(inputClasses);
 
-    if (props.invalid && props.shouldValidate) {
+    if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
     
