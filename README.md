@@ -7,8 +7,12 @@
 * Allows the user to "checkout" and see the quantity of ingredients added to the burger.
 * Allows the user to view the total price of the burger.
 * Allows the user to "cancel" and edit the burger if needed.
-* Allows the user to "continue" with the order. However this just shows an alert.
-* Allows the user to view a mobile version of the application.
+* Allows the user to "continue" with the order. 
+* Allows the user to review the order.
+* Allows the user to continue and fill out their contact information.
+* Allows the user to submit the order to the database.
+    * At this time, the order just goes to the database and nothing else happens.
+* Also allows the user to view a mobile version of the application.
 
 ### Dependencies
 * React
