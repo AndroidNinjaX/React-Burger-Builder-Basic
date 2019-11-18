@@ -144,8 +144,8 @@ class ContactData extends Component {
         const updatedFormElement = {
             ...updatedOrderForm[inputIdentifier]
         };
-        //console.log("[ContactData] here! This is the 'updatedFormelement'");
-        //console.log(updatedFormElement);
+        console.log("[ContactData] here! This is the 'updatedFormelement'");
+        console.log(updatedFormElement);
 
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
@@ -174,6 +174,8 @@ class ContactData extends Component {
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.config.value}
+                        invalid={!formElement.config.valid}
+                        shouldValidate={formElement.config.validation}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
             </form>

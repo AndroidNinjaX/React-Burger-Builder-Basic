@@ -4,20 +4,28 @@ import classes from './Input.module.css';
 const input = (props) => {
 
     let inputElement = null;
+    const inputClasses = [classes.InputElement];
+
+    //console.log("[Input.js] here! This is the 'inputClasses' array");
+    //console.log(inputClasses);
+
+    if (props.invalid && props.shouldValidate) {
+        inputClasses.push(classes.Invalid);
+    }
     
     switch (props.elementType) {
         case ('input'):
             //console.log("[Input.js] here! This is the props in 'input'");
             //console.log(props);
             inputElement = <input 
-                className={classes.InputElement} 
+                className={inputClasses.join(' ')} 
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}/>;
             break;
         case ('textarea'):
             inputElement = <textarea 
-                className={classes.InputElement}
+                className={inputClasses.join(' ')}
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}/>;
@@ -27,7 +35,7 @@ const input = (props) => {
             //console.log(props);
             inputElement = (
                 <select
-                    className={classes.InputElement}
+                    className={inputClasses.join(' ')}
                     value={props.value}
                     onChange={props.changed}>
                     {props.elementConfig.options.map(option => (
