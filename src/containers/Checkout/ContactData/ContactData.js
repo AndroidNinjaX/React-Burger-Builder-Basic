@@ -85,6 +85,7 @@ class ContactData extends Component {
                     ]
                 },
                 value: '',
+                validation: {},
                 valid: true
             },
         },
@@ -123,6 +124,11 @@ class ContactData extends Component {
 
     checkValidity = (value, rules) => {
         let isValid = true;
+
+        //Check for "delevery options" because it did not have validation.
+        if(!rules) {
+            return true;
+        }
         
         //console.log("[ContactData] here! This is the 'value'");
         //console.log(value);
